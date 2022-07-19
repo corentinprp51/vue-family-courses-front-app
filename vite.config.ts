@@ -9,6 +9,7 @@ export default defineConfig({
       vue(),
       VitePWA({
           registerType: 'autoUpdate',
+          injectRegister: 'auto',
           manifest: {
               name: 'Family Courses',
               short_name: 'Family Courses',
