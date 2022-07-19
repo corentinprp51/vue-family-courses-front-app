@@ -14,6 +14,7 @@ specifiers:
   vite: ^3.0.0
   vite-plugin-pwa: ^0.12.3
   vue: ^3.2.37
+  vue-router: ^4.1.2
   vue-tsc: ^0.38.4
 
 dependencies:
@@ -21,6 +22,7 @@ dependencies:
   '@typescript-eslint/parser': 5.30.7_eslint@8.20.0+typescript@4.7.4
   '@vue/eslint-config-typescript': 11.0.0_a488cb534e8ad67f4f2f9e74793fd8d9
   vue: 3.2.37
+  vue-router: 4.1.2_vue@3.2.37
 
 devDependencies:
   '@vitejs/plugin-vue': 3.0.1_vite@3.0.1+vue@3.2.37
@@ -1568,6 +1570,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.2.37
       '@vue/shared': 3.2.37
+
+  /@vue/devtools-api/6.2.1:
+    resolution: {integrity: sha512-OEgAMeQXvCoJ+1x8WyQuVZzFo0wcyCmUR3baRVLmKBo1LmYZWMlRiXlux5jd0fqVJu6PfDbOrZItVqUEzLobeQ==}
+    dev: false
 
   /@vue/eslint-config-typescript/11.0.0_a488cb534e8ad67f4f2f9e74793fd8d9:
     resolution: {integrity: sha512-txuRzxnQVmtUvvy9UyWUy9sHWXNeRPGmSPqP53hRtaiUeCTAondI9Ho9GQYI/8/eWljYOST7iA4Aa8sANBkWaA==}
@@ -3717,6 +3723,15 @@ packages:
       semver: 7.3.7
     transitivePeerDependencies:
       - supports-color
+
+  /vue-router/4.1.2_vue@3.2.37:
+    resolution: {integrity: sha512-5BP1qXFncVRwgV/XnqzsKApdMjQPqWIpoUBdL1ynz8HyLxIX/UDAx7Ql2BjmA5CXT/p61JfZvkpiFWFpaqcfag==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.2.1
+      vue: 3.2.37
+    dev: false
 
   /vue-tsc/0.38.8_typescript@4.7.4:
     resolution: {integrity: sha512-hhyc5SODiekcYNXG08aNg17LogR19o3i14avVejo+Fm45Dqk9Ke6rb0M19HoTKdQGfZBgqg2VUboYxmtAukWeg==}
