@@ -11,6 +11,7 @@
         Menu
       </h2>
       <navbar-menu />
+      <back-menu />
     </div>
   </div>
 </template>
@@ -20,6 +21,7 @@
 import TitleBig from '@/components/title/title-big.vue';
 import TitleMedium from '@/components/title/title-medium.vue'
 import NavbarMenu from '@/components/navigation/navbar-menu.vue';
+import BackMenu from '@/components/navigation/back-menu.vue';
 </script>
 
 <style scoped>
