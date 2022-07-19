@@ -5,6 +5,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'home',
         component: () => import('@/App.vue')
+    },
+    {
+        path: '/uikit',
+        name: 'uikit',
+        component: () => import('@/views/uikit-view.vue')
     }
 ]
 
