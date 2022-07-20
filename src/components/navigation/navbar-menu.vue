@@ -16,7 +16,3 @@
 
 import LinkItem from '@/components/navigation/link-item.vue';
 </script>
-
-<style scoped>
-
-</style>

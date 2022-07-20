@@ -16,6 +16,15 @@
         <button-item class="w-full">
           Ajouter un article
         </button-item>
+        <div class="mt-2">
+          <input-with-label
+            v-model="inputModel"
+            label="Adresse mail"
+            type="email"
+            placeholder="Ceci est un placeholder"
+          />
+          {{ inputModel }}
+        </div>
       </div>
     </div>
   </div>
@@ -28,6 +37,10 @@ import TitleMedium from '@/components/title/title-medium.vue'
 import NavbarMenu from '@/components/navigation/navbar-menu.vue';
 import BackMenu from '@/components/navigation/back-menu.vue';
 import ButtonItem from '@/components/form/button-item.vue';
+import InputWithLabel from '@/components/form/input-with-label.vue';
+import { ref } from 'vue';
+
+const inputModel = ref('')
 </script>
 
 <style scoped>
