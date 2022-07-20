@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+const transition: string = (route.meta.transition) as string || 'fade'
 </script>
 
 <template>
-  <router-view v-slot="{ Component, route }">
+  <router-view v-slot="{ Component }">
     <!-- Use any custom transition and fallback to `fade` -->
-    <transition :name="route.meta.transition || 'fade'" mode="out-in">
+    <transition :name="transition" mode="out-in">
       <component :is="Component" />
     </transition>
   </router-view>
