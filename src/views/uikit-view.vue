@@ -12,6 +12,11 @@
       </h2>
       <navbar-menu />
       <back-menu />
+      <div class="mx-[15px]">
+        <button-item class="w-full">
+          Ajouter un article
+        </button-item>
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +27,7 @@ import TitleBig from '@/components/title/title-big.vue';
 import TitleMedium from '@/components/title/title-medium.vue'
 import NavbarMenu from '@/components/navigation/navbar-menu.vue';
 import BackMenu from '@/components/navigation/back-menu.vue';
+import ButtonItem from '@/components/form/button-item.vue';
 </script>
 
 <style scoped>
