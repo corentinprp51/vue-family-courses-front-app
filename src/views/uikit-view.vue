@@ -31,7 +31,8 @@
         </div>
       </div>
       <div class="mt-2">
-        <card-profile />
+        <card-profile v-model="identity" :identity="identity" />
+        <card-home />
       </div>
     </div>
   </div>
@@ -49,8 +50,13 @@ import { ref } from 'vue';
 import InputInvitationLink from '@/components/form/input-invitation-link.vue';
 import InputGeneric from '@/components/form/input-generic.vue';
 import CardProfile from '@/components/cards/card-profile.vue';
+import CardHome from '@/components/cards/card-home.vue';
 
 const inputModel = ref('')
+const identity = ref({
+  firstName: 'Corentin',
+  lastName: 'Parpette'
+})
 </script>
 
 <style scoped>
