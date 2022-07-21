@@ -30,6 +30,9 @@
           <input-invitation-link v-model="inputModel" />
         </div>
       </div>
+      <div class="mt-2">
+        <card-profile />
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +48,7 @@ import InputWithLabel from '@/components/form/input-with-label.vue';
 import { ref } from 'vue';
 import InputInvitationLink from '@/components/form/input-invitation-link.vue';
 import InputGeneric from '@/components/form/input-generic.vue';
+import CardProfile from '@/components/cards/card-profile.vue';
 
 const inputModel = ref('')
 </script>
