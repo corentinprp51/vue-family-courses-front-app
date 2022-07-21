@@ -13,10 +13,11 @@
       <navbar-menu />
       <back-menu />
       <div class="mx-[15px]">
-        <button-item class="w-full">
+        <button-item class="w-full py-[7px]">
           Ajouter un article
         </button-item>
         <div class="mt-2">
+          <input-generic v-model="inputModel" />
           <input-with-label
             v-model="inputModel"
             label="Adresse mail"
@@ -24,6 +25,9 @@
             placeholder="Ceci est un placeholder"
           />
           {{ inputModel }}
+        </div>
+        <div class="mt-2">
+          <input-invitation-link v-model="inputModel" />
         </div>
       </div>
     </div>
@@ -39,6 +43,8 @@ import BackMenu from '@/components/navigation/back-menu.vue';
 import ButtonItem from '@/components/form/button-item.vue';
 import InputWithLabel from '@/components/form/input-with-label.vue';
 import { ref } from 'vue';
+import InputInvitationLink from '@/components/form/input-invitation-link.vue';
+import InputGeneric from '@/components/form/input-generic.vue';
 
 const inputModel = ref('')
 </script>
