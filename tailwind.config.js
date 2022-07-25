@@ -10,6 +10,7 @@ module.exports = {
         'primary-color-darker': '#CC6200',
         'secondary-text-color': '#F1F1F1',
         'third-text-color': '#9A9A9A',
+        'light-gray-bg': '#F7F7F7',
       },
       dropShadow: {
         'classic': '0 4px 2px rgba(0,0,0,0.10)'
