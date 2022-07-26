@@ -85,8 +85,21 @@ const fakeList = ref({
     {
       libelle: 'Mais'
     }
-  ]
-}) as Ref<ListHomePage>
+  ],
+  users: [
+    {
+      id: 1,
+      email: "test@example.com",
+      username: "corentin",
+      firstname: null,
+      lastname: null,
+      remember_me_token: null,
+      created_at: "2022-06-22T15:32:08.000+02:00",
+      updated_at: "2022-06-22T15:32:08.000+02:00",
+      role: "owner"
+    },
+  ],
+}) as unknown as Ref<ListHomePage>
 </script>
 
 <style scoped>
