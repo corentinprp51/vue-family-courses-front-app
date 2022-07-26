@@ -39,6 +39,9 @@
       <div class="mt-4">
         <list-element :product="fakeList.products[0]" class="mx-[15px]" />
       </div>
+      <div class="mt-4">
+        <products_list :products="fakeList.products" @check-product="toggleCheckProduct" @remove-product="removeProduct" />
+      </div>
       <navbar-menu />
     </div>
   </div>
@@ -59,6 +62,8 @@ import CardProfile from '@/components/cards/card-profile.vue';
 import CardHome from '@/components/cards/card-home.vue';
 import { ListHomePage } from '@/types/lists/ListHomePage';
 import ListElement from '@/components/lists/list-element.vue';
+import Products_list from '@/components/lists/products_list.vue';
+import { Product } from '@/types/products/Product';
 
 const inputModel = ref('')
 const identity = ref({
@@ -71,19 +76,29 @@ const fakeList = ref({
   created_at: "2022-06-24T13:44:28.000+02:00",
   products: [
     {
-      libelle: 'Oeufs'
+      id: 0,
+      libelle: 'Oeufs',
+      checked: false,
     },
     {
-      libelle: 'Farine'
+      id: 1,
+      libelle: 'Farine',
+      checked: false,
     },
     {
-      libelle: 'Pain'
+      id: 2,
+      libelle: 'Pain',
+      checked: false,
     },
     {
-      libelle: 'Nutella'
+      id: 3,
+      libelle: 'Nutella',
+      checked: false,
     },
     {
-      libelle: 'Mais'
+      id: 4,
+      libelle: 'Mais',
+      checked: false,
     }
   ],
   users: [
@@ -100,6 +115,12 @@ const fakeList = ref({
     },
   ],
 }) as unknown as Ref<ListHomePage>
+const toggleCheckProduct = (product: Product) => {
+  product.checked = !product.checked
+}
+const removeProduct = (productId: number) => {
+  fakeList.value.products = fakeList.value.products.filter(p => p.id !== productId)
+}
 </script>
 
 <style scoped>
