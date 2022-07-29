@@ -11,8 +11,8 @@ export const useGetByUsers = () => {
                 lists.value = response.data
                 return response.data
             })
-            .catch((err) => {
-                console.log(err)
+            .catch(() => {
+                error.value = 'Une erreur est survenue'
             })
     }
     getLists()

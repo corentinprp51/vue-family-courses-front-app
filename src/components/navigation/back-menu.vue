@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-primary-color h-[40px] fixed top-0 flex items-center">
+  <div class="w-full bg-primary-color h-[40px] fixed top-0 flex items-center mb-[40px]">
     <img
       src="@/assets/menu-back.svg"
       class="ml-[10px]"

@@ -24,9 +24,10 @@ export const useRegister = () => {
                         return response.data
                     })
                     .catch((err) => {
-                        console.log(err)
                         if (err.status === 422) {
                             error.value = err.message
+                        } else {
+                            error.value = 'Une erreur est survenue'
                         }
                     })
             } else {

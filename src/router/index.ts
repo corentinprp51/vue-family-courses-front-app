@@ -28,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'register',
         component: () => import('@/views/register-view.vue')
     },
+    {
+        path: '/create',
+        name: 'create_list',
+        component: () => import('@/views/create-list-view.vue')
+    },
 ]
 
 const router = createRouter({
