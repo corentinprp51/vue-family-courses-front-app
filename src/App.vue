@@ -1,47 +1,33 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from '@/components/HelloWorld.vue';
+import { useRoute } from 'vue-router';
+import NavbarMenu from '@/components/navigation/navbar-menu.vue';
+
+const route = useRoute()
+const transition: string = (route.meta.transition) as string || 'fade'
 </script>
 
 <template>
-  <p class="bg-pink-500">
-    TEST
-  </p>
   <div>
-    <a
-      href="https://vitejs.dev"
-    >
-      <img
-        src="/vite.svg"
-        class="logo"
-        alt="Vite logo"
-      >
-    </a>
-    <a
-      href="https://vuejs.org/"
-      target="_blank"
-    >
-      <img
-        src="./assets/vue.svg"
-        class="logo vue"
-        alt="Vue logo"
-      >
-    </a>
+    <div class="px-[15px] bg-main-background-color min-h-screen">
+      <router-view v-slot="{ Component }">
+        <!-- Use any custom transition and fallback to `fade` -->
+        <transition :name="transition" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </div>
+    <navbar-menu v-if="route.name !== 'login' && route.name !== 'register'" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<style scoped lang="css">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
