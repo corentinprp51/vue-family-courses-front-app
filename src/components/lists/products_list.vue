@@ -5,6 +5,7 @@
       <list-element
         v-for="product in products.filter((p => !p.checked))"
         :key="product.id"
+        class="first:mt-0 mt-[5px]"
         :product="product"
         @check-product="emit('checkProduct', product)"
         @remove-product="emit('removeProduct', product.id)"
@@ -17,6 +18,7 @@
       <list-element
         v-for="product in products.filter((p => p.checked))"
         :key="product.id"
+        class="first:mt-0 mt-[5px]"
         :product="product"
         @check-product="emit('checkProduct', product)"
         @remove-product="emit('removeProduct', product.id)"

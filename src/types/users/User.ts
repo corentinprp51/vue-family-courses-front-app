@@ -7,5 +7,4 @@ export interface User {
     remember_me_token: string
     created_at: string
     updated_at: string
-    role: string
 }

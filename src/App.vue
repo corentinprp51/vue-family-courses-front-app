@@ -6,7 +6,7 @@ import BackMenu from '@/components/navigation/back-menu.vue';
 const route = useRoute()
 const transition: string = (route.meta.transition) as string || 'fade'
 
-const routesForBackMenu = ['create_list']
+const routesForBackMenu = ['create_list', 'get_list']
 const needBackMenu = () => {
   if (route && route.name) {
     return routesForBackMenu.includes(route.name.toString())
@@ -17,8 +17,10 @@ const needBackMenu = () => {
 
 <template>
   <div>
-    <back-menu v-if="needBackMenu" />
-    <div class="px-[15px] bg-main-background-color min-h-screen" :class="needBackMenu ? 'pt-[40px]' : ''">
+    <transition :name="transition" mode="out-in">
+      <back-menu v-if="needBackMenu()" />
+    </transition>
+    <div class="px-[15px] pb-[15px] bg-main-background-color h-[calc(100vh_-_55px)] overflow-y-scroll" :class="needBackMenu() ? 'pt-[40px]' : ''">
       <router-view v-slot="{ Component }">
         <!-- Use any custom transition and fallback to `fade` -->
         <transition :name="transition" mode="out-in">
@@ -33,7 +35,7 @@ const needBackMenu = () => {
 <style scoped lang="css">
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.2s ease;
 }
 
 .fade-enter-from,

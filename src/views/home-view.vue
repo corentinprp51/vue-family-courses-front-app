@@ -2,7 +2,12 @@
   <div class="pt-[37px]">
     <title-big>Vos listes</title-big>
     <div v-if="lists && lists.length > 0" class="mt-[37px] grid grid-cols-1 gap-y-[10px]">
-      <card-home v-for="list in lists" :key="list.id" :list="list" />
+      <card-home
+        v-for="list in lists"
+        :key="list.id"
+        :list="list"
+        @click="router.push(`/${list.id}`)"
+      />
     </div>
     <button-item class="py-[12px] w-full mt-[30px]" @click="router.push('/create')">
       Créer une nouvelle liste

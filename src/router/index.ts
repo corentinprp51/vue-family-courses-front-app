@@ -33,6 +33,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'create_list',
         component: () => import('@/views/create-list-view.vue')
     },
+    {
+        path: '/:id',
+        name: 'get_list',
+        component: () => import('@/views/get-list-view.vue')
+    },
 ]
 
 const router = createRouter({
