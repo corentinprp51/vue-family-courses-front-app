@@ -3,7 +3,7 @@
     <label-generic class="font-light italic text-third-text-color text-[12px]">
       {{ label }}
     </label-generic>
-    <input-generic v-model="propsValue" />
+    <input-generic v-bind="$attrs" v-model="propsValue" />
   </div>
 </template>
 

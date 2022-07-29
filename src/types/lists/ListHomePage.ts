@@ -1,5 +1,5 @@
 import { Product } from '@/types/products/Product';
-import { User } from '@/types/User';
+import { User } from '@/types/users/User';
 
 export interface ListHomePage {
     id: number

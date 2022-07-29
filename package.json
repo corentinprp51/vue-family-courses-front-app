@@ -11,6 +11,8 @@
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "@vue/eslint-config-typescript": "^11.0.0",
+    "axios": "^0.27.2",
+    "pinia": "^2.0.17",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2"
   },

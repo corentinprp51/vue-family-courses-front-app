@@ -30,7 +30,7 @@
 
 import { ListHomePage } from '@/types/lists/ListHomePage';
 import { computed } from 'vue';
-import { User } from '@/types/User';
+import { User } from '@/types/users/User';
 
 const props = defineProps< { list: ListHomePage } >()
 const getLocalDate = computed(() => {
