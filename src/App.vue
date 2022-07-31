@@ -6,7 +6,7 @@ import BackMenu from '@/components/navigation/back-menu.vue';
 const route = useRoute()
 const transition: string = (route.meta.transition) as string || 'fade'
 
-const routesForBackMenu = ['create_list', 'get_list']
+const routesForBackMenu = ['create_list', 'get_list', 'add_product_to_list']
 const needBackMenu = () => {
   if (route && route.name) {
     return routesForBackMenu.includes(route.name.toString())

@@ -4,17 +4,20 @@ import { ListHomePage } from '@/types/lists/ListHomePage';
 import { useUserStore } from '@/store/user';
 import { UserFromList } from '@/types/users/UserFromList';
 import { User } from '@/types/users/User';
+import { useListStore } from '@/store/list';
 
 export const useGetOne = (listId: string) => {
     const list: Ref<null | ListHomePage> = ref(null)
     const error: Ref<string> = ref('')
     const userList: Ref<null | UserFromList> = ref(null)
     const userStore = useUserStore()
+    const listStore = useListStore()
     const getList = async (listId: string) => {
         error.value = '';
         await instance.get(`lists/${listId}`)
             .then((response) => {
                 list.value = response.data
+                listStore.setList(list.value)
                 if (list.value && list.value.users) {
                     const userFromList = list.value.users.find((u) => u.id === (userStore.user as User).id)
                     if (userFromList) {

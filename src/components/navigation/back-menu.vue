@@ -19,7 +19,8 @@ const route = useRoute()
 const navigateBack = (): void => {
   const urlArray = route.path.split('/')
   urlArray.pop()
-  if (urlArray.length === 0 || !urlArray[0]) {
+  console.log('URL', urlArray)
+  if (urlArray.length === 0 || (urlArray.length === 1 && !urlArray[0])) {
     router.push('/')
   } else {
     router.push(urlArray.join('/'))
