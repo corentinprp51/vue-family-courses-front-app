@@ -22,8 +22,8 @@ export const useLogin = () => {
                     router.push('/')
                     return response.data
                 })
-                .catch((error) => {
-                    if (error.status === 422) {
+                .catch((err) => {
+                    if (err.status === 422) {
                         error.value = 'Veuillez saisir une adresse mail et un mot de passe conformes'
                     } else {
                         error.value = 'Identifiants incorrects'
