@@ -8,12 +8,14 @@ import { useListStore } from '@/store/list';
 
 export const useGetOne = (listId: string) => {
     const list: Ref<null | ListHomePage> = ref(null)
+    const isPreloading: Ref<boolean> = ref(false)
     const error: Ref<string> = ref('')
     const userList: Ref<null | UserFromList> = ref(null)
     const userStore = useUserStore()
     const listStore = useListStore()
     const getList = async (listId: string) => {
         error.value = '';
+        isPreloading.value = true
         await instance.get(`lists/${listId}`)
             .then((response) => {
                 list.value = response.data
@@ -29,11 +31,15 @@ export const useGetOne = (listId: string) => {
             .catch(() => {
                 error.value = 'Une erreur est survenue'
             })
+            .finally(() => {
+                isPreloading.value = false
+            })
     }
     getList(listId)
     return {
         getList,
         userList,
+        isPreloading,
         list,
         error
     }

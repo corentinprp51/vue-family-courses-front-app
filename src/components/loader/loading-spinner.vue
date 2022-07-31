@@ -1,0 +1,23 @@
+<template>
+  <div class="loader" />
+</template>
+
+<script lang="ts" setup>
+
+</script>
+
+<style scoped>
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #FC7900;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
