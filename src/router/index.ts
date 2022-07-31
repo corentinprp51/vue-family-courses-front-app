@@ -34,6 +34,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/create-list-view.vue')
     },
     {
+        path: '/join',
+        name: 'join_list',
+        component: () => import('@/views/join-list-view.vue')
+    },
+    {
         path: '/:id',
         name: 'get_list',
         component: () => import('@/views/get-list-view.vue')

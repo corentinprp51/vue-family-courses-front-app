@@ -5,7 +5,12 @@
       <button-item class="py-[7px] w-[70%]" @click="router.push(`/${list.id}/add`)">
         Ajouter un article
       </button-item>
-      <img src="@/assets/invitationLinkIcon.svg" class="ml-[9px]" alt="Inviter des amis">
+      <img
+        src="@/assets/invitationLinkIcon.svg"
+        class="ml-[9px]"
+        alt="Inviter des amis"
+        @click="copyInvitationLink"
+      >
       <img
         v-if="userList.role === 'owner'"
         src="@/assets/editListIcon.svg"
@@ -34,4 +39,10 @@ const route = useRoute()
 const router = useRouter()
 const { error, list, userList } = useGetOne(route.params.id.toString())
 const { toggleCheckProduct, removeProduct } = useProducts(list)
+
+const copyInvitationLink = () => {
+  if (list.value)
+    return navigator.clipboard.writeText(list.value.invitation_link)
+  return
+}
 </script>
