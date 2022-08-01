@@ -20,6 +20,7 @@
           src="@/assets/editListIcon.svg"
           class="ml-[9px]"
           alt="Modifier la liste"
+          @click="router.push(`/${list.id}/edit`)"
         >
       </div>
       <div class="mt-[20px]">

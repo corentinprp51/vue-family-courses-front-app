@@ -44,3 +44,7 @@ export const useGetOne = (listId: string) => {
         error
     }
 }
+
+export const fetchList = async (listId: string) => {
+    return await instance.get(`lists/${listId}`).then((res) => res.data).catch(() => 'Une erreur est survenue')
+}

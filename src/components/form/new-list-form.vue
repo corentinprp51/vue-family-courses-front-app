@@ -7,7 +7,8 @@
       <input-invitation-link v-model="propsValue.invitation_link" @generate-link="emit('generateLink', $event)" />
     </div>
     <button-item type="submit" class="mt-[20px] py-[7px]">
-      Créer
+      <span v-if="isEdit">Modifier</span>
+      <span v-else>Créer</span>
     </button-item>
   </form>
 </template>
@@ -19,7 +20,9 @@ import { useVModel } from '@/composables/UseVModel';
 import { ListHomePage } from '@/types/lists/ListHomePage';
 import InputInvitationLink from '@/components/form/input-invitation-link.vue';
 
-const props = defineProps<{modelValue: ListHomePage}>()
+const props = withDefaults(defineProps<{modelValue: ListHomePage; isEdit?: boolean}>(), {
+  isEdit: false
+})
 const propsValue = useVModel(props, 'modelValue')
 const emit = defineEmits<{
   (e: 'submitListForm'): void,
