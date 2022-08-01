@@ -2,6 +2,8 @@
 import { useRoute } from 'vue-router';
 import NavbarMenu from '@/components/navigation/navbar-menu.vue';
 import BackMenu from '@/components/navigation/back-menu.vue';
+import { io } from 'socket.io-client';
+import { useSocketStore } from '@/store/socket';
 
 const route = useRoute()
 const transition: string = (route.meta.transition) as string || 'fade'
@@ -13,6 +15,9 @@ const needBackMenu = () => {
   }
   return false
 }
+const socketStore = useSocketStore()
+const socket = io('http://localhost:3333/')
+socketStore.setSocket(socket)
 </script>
 
 <template>

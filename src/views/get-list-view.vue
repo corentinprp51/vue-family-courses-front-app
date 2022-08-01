@@ -41,6 +41,9 @@ import ButtonItem from '@/components/form/button-item.vue';
 import Products_list from '@/components/lists/products_list.vue';
 import { useProducts } from '@/api/products/useProducts';
 import LoadingSpinner from '@/components/loader/loading-spinner.vue';
+import { useSocketStore } from '@/store/socket';
+import { Product } from '@/types/products/Product';
+import { onMounted, onUnmounted } from 'vue';
 
 const route = useRoute()
 const router = useRouter()
@@ -52,4 +55,33 @@ const copyInvitationLink = () => {
     return navigator.clipboard.writeText(list.value.invitation_link)
   return
 }
+const socketStore = useSocketStore()
+onMounted(() => {
+  if (socketStore.socket) {
+    socketStore.socket.on('update:product', (data: Product) => {
+      const product = list.value?.products.find((p) => p.id === data.id)
+      if (product) {
+        product.checked = data.checked
+      }
+    })
+    socketStore.socket.on('delete:product', (productId: number) => {
+      if (list.value) {
+        list.value.products = list.value.products.filter((p) => p.id !== productId)
+      }
+    })
+    socketStore.socket.on('add:product', (product: Product) => {
+      if (list.value) {
+        list.value.products.push(product)
+      }
+    })
+  }
+})
+onUnmounted(() => {
+  if(socketStore.socket) {
+    socketStore.socket.removeAllListeners('update:product')
+    socketStore.socket.removeAllListeners('delete:product')
+    socketStore.socket.removeAllListeners('add:product')
+  }
+})
+
 </script>
