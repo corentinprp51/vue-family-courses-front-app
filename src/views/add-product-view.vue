@@ -1,10 +1,7 @@
 <template>
   <div>
-    <title-medium v-if="listStore.list && listStore.list.id.toString() === listId">
+    <title-medium>
       {{ listStore.list.title }}
-    </title-medium>
-    <title-medium v-else>
-      Ajouter un produit
     </title-medium>
     <div class="mt-[43px]">
       <add-product-form v-model="newProduct" @add-product-form="addProduct(newProduct, listId)" />

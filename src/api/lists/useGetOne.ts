@@ -5,6 +5,7 @@ import { useUserStore } from '@/store/user';
 import { UserFromList } from '@/types/users/UserFromList';
 import { User } from '@/types/users/User';
 import { useListStore } from '@/store/list';
+import router from '@/router';
 
 export const useGetOne = (listId: string) => {
     const list: Ref<null | ListHomePage> = ref(null)
@@ -19,17 +20,19 @@ export const useGetOne = (listId: string) => {
         await instance.get(`lists/${listId}`)
             .then((response) => {
                 list.value = response.data
-                listStore.setList(list.value)
                 if (list.value && list.value.users) {
                     const userFromList = list.value.users.find((u) => u.id === (userStore.user as User).id)
                     if (userFromList) {
                         userList.value = userFromList
+                        listStore.setList(list.value)
+                    } else {
+                        router.push('/')
                     }
                 }
                 return response.data
             })
             .catch(() => {
-                error.value = 'Une erreur est survenue'
+                router.push('/')
             })
             .finally(() => {
                 isPreloading.value = false

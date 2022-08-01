@@ -41,14 +41,6 @@ const routes: Array<RouteRecordRaw> = [
         }
     },
     {
-        path: '/create',
-        name: 'create_list',
-        component: () => import('@/views/create-list-view.vue'),
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
         path: '/:id/edit',
         name: 'edit_list',
         component: () => import('@/views/edit-list-view.vue'),
@@ -87,13 +79,15 @@ const router = createRouter({
     routes
 })
 
+const userIsMember = (userId: number, users: Array<UserFromList>): boolean => {
+    return users.find((u) => u.id === userId) !== undefined
+}
 const userIsOwner = (userId: number, users: Array<UserFromList>): boolean => {
     const user = users.find((u) => u.id === userId)
     if (user) {
         return user.role === 'owner';
     }
     return false
-
 }
 
 router.beforeEach(async (to, from, next) => {
@@ -119,6 +113,25 @@ router.beforeEach(async (to, from, next) => {
             // fetch list et faire la même chose qu'au dessus
             const data = await fetchList(to.params.id.toString())
             if (data.id && userIsOwner((userStore.user as User).id, data.users)) {
+                listStore.setList(data)
+                next()
+            } else {
+                next(from.path || '/')
+            }
+        }
+        return
+    }
+    if(to.name === 'add_product_to_list') {
+        if(listStore.list && listStore.list.id.toString() === to.params.id) {
+            if(userIsMember((userStore.user as User).id, listStore.list.users)) {
+                next()
+            } else {
+                next(from.path || '/')
+            }
+        } else {
+            // fetch list et faire la même chose qu'au dessus
+            const data = await fetchList(to.params.id.toString())
+            if (data.id && userIsMember((userStore.user as User).id, data.users)) {
                 listStore.setList(data)
                 next()
             } else {
