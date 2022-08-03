@@ -18,7 +18,7 @@ import TitleMedium from '@/components/title/title-medium.vue';
 import NewListForm from '@/components/form/new-list-form.vue';
 import { reactive } from 'vue';
 import { useSubmitListForm } from '@/api/lists/useSubmitListForm';
-import ErrorBanner from '@/components/errors/error-banner.vue';
+import ErrorBanner from '@/components/banner/error-banner.vue';
 
 const { error, submitListForm } = useSubmitListForm()
 const newList = reactive({

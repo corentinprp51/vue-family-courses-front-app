@@ -72,6 +72,14 @@ const routes: Array<RouteRecordRaw> = [
             requiresAuth: true
         }
     },
+    {
+        path: '/profile',
+        name: 'user_profile',
+        component: () => import('@/views/user-profile-view.vue'),
+        meta: {
+            requiresAuth: true
+        }
+    },
 ]
 
 const router = createRouter({

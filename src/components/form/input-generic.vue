@@ -5,6 +5,6 @@
 <script lang="ts" setup>
 import { useVModel } from '@/composables/UseVModel';
 
-const props = defineProps<{ modelValue: string | number }>()
+const props = defineProps<{ modelValue: string | number | null }>()
 const propsValue = useVModel(props, 'modelValue')
 </script>

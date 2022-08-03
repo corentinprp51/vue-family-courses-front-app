@@ -13,6 +13,6 @@ import { useVModel } from '@/composables/UseVModel';
 import InputGeneric from '@/components/form/input-generic.vue';
 import LabelGeneric from '@/components/form/label-generic.vue';
 
-const props = defineProps<{modelValue: string | number; label: string}>()
+const props = defineProps<{modelValue: string | number | null; label: string}>()
 const propsValue = useVModel(props, 'modelValue')
 </script>

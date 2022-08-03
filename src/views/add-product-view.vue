@@ -19,7 +19,7 @@ import { useListStore } from '@/store/list';
 import AddProductForm from '@/components/form/add-product-form.vue';
 import { reactive } from 'vue';
 import { useAddOne } from '@/api/products/useAddOne';
-import ErrorBanner from '@/components/errors/error-banner.vue';
+import ErrorBanner from '@/components/banner/error-banner.vue';
 
 const route = useRoute()
 const listId = route.params.id.toString()

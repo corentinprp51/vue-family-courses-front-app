@@ -18,7 +18,7 @@ import TitleMedium from '@/components/title/title-medium.vue';
 import InputWithLabel from '@/components/form/input-with-label.vue';
 import ButtonItem from '@/components/form/button-item.vue';
 import { ref } from 'vue';
-import ErrorBanner from '@/components/errors/error-banner.vue';
+import ErrorBanner from '@/components/banner/error-banner.vue';
 import { useJoinList } from '@/api/lists/useJoinList';
 
 const joinLink = ref('')

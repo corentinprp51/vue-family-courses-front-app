@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import TitleBig from '@/components/title/title-big.vue';
-import ErrorBanner from '@/components/errors/error-banner.vue';
+import ErrorBanner from '@/components/banner/error-banner.vue';
 import { reactive } from 'vue';
 import RegisterForm from '@/components/form/register-form.vue';
 import { useRegister } from '@/api/authentication/useRegister';

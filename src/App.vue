@@ -4,6 +4,7 @@ import NavbarMenu from '@/components/navigation/navbar-menu.vue';
 import BackMenu from '@/components/navigation/back-menu.vue';
 import { io } from 'socket.io-client';
 import { useSocketStore } from '@/store/socket';
+import FlashMessageHandler from '@/components/banner/flash-messages/flash-message-handler.vue';
 
 const route = useRoute()
 const transition: string = (route.meta.transition) as string || 'fade'
@@ -21,7 +22,9 @@ socketStore.setSocket(socket)
 </script>
 
 <template>
-  <div>
+  <div class="min-w-screen max-w-screen overflow-hidden">
+    <!-- Flash Message Handler -->
+    <flash-message-handler />
     <transition :name="transition" mode="out-in">
       <back-menu v-if="needBackMenu()" />
     </transition>

@@ -16,7 +16,7 @@ import TitleBig from '@/components/title/title-big.vue';
 import LoginForm from '@/components/form/login-form.vue';
 import { reactive } from 'vue';
 import { useLogin } from '@/api/authentication/useLogin';
-import ErrorBanner from '@/components/errors/error-banner.vue';
+import ErrorBanner from '@/components/banner/error-banner.vue';
 
 const { error, login } = useLogin()
 
