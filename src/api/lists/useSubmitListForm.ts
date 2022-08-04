@@ -2,6 +2,7 @@ import instance from '@/api';
 import { Ref, ref } from 'vue';
 import { ListHomePage } from '@/types/lists/ListHomePage';
 import router from '@/router';
+import FlashMessagesService from '@/services/FlashMessagesService';
 
 export const useSubmitListForm = () => {
     const list = ref(null)
@@ -13,6 +14,7 @@ export const useSubmitListForm = () => {
                 await instance.post('lists/new', newList)
                     .then((response) => {
                         list.value = response.data
+                        FlashMessagesService.getInstance().success('La liste a bien été créée')
                         router.push('/')
                         return response.data
                     })
@@ -23,6 +25,7 @@ export const useSubmitListForm = () => {
                 await instance.put(`lists/${newList.id}`, newList)
                     .then((response) => {
                         list.value = response.data
+                        FlashMessagesService.getInstance().success('La liste a bien été modifiée')
                         router.push(`/${newList.id}`)
                         return response.data
                     })

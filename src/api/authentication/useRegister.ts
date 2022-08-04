@@ -3,6 +3,7 @@ import { Ref, ref } from 'vue';
 import router from '@/router';
 import { useUserStore } from '@/store/user';
 import { UserRegister } from '@/types/users/UserRegister';
+import FlashMessagesService from '@/services/FlashMessagesService';
 
 export const useRegister = () => {
     const user = ref(null)
@@ -20,6 +21,7 @@ export const useRegister = () => {
                         user.value = response.data.user
                         userStore.setUser(user.value)
                         userStore.setToken(token.value)
+                        FlashMessagesService.getInstance().success('Vous vous êtes inscris avec succès !')
                         router.push('/')
                         return response.data
                     })

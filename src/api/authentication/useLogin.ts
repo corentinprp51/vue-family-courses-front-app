@@ -3,6 +3,7 @@ import instance from '@/api';
 import { Ref, ref } from 'vue';
 import router from '@/router';
 import { useUserStore } from '@/store/user';
+import FlashMessagesService from '@/services/FlashMessagesService';
 
 export const useLogin = () => {
     const user = ref(null)
@@ -19,6 +20,7 @@ export const useLogin = () => {
                     user.value = response.data.user
                     userStore.setUser(user.value)
                     userStore.setToken(token.value)
+                    FlashMessagesService.getInstance().success('Vous désormais connecté')
                     router.push('/')
                     return response.data
                 })
