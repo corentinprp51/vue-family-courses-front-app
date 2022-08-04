@@ -16,8 +16,18 @@ const needBackMenu = () => {
   }
   return false
 }
+const getDivClasses = () => {
+  const classes = []
+  if (needBackMenu()) classes.push('pt-[40px]')
+  if (route.name && route.name.toString().includes('login') || route.name && route.name.toString().includes('register')) {
+    classes.push('h-screen')
+  } else {
+    classes.push('h-[calc(100vh_-_55px)]')
+  }
+  return classes
+}
 const socketStore = useSocketStore()
-const socket = io('http://localhost:3333/')
+const socket = io(import.meta.env.VITE_BASE_URL_SOCKET)
 socketStore.setSocket(socket)
 </script>
 
@@ -28,7 +38,7 @@ socketStore.setSocket(socket)
     <transition :name="transition" mode="out-in">
       <back-menu v-if="needBackMenu()" />
     </transition>
-    <div class="px-[15px] pb-[15px] bg-main-background-color h-[calc(100vh_-_55px)] overflow-y-scroll" :class="needBackMenu() ? 'pt-[40px]' : ''">
+    <div class="px-[15px] pb-[15px] bg-main-background-color overflow-y-scroll" :class="getDivClasses()">
       <router-view v-slot="{ Component }">
         <!-- Use any custom transition and fallback to `fade` -->
         <transition :name="transition" mode="out-in">

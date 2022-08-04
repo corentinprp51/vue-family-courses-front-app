@@ -4,6 +4,9 @@
       Inscription
     </title-big>
     <register-form v-model="formUserRegister" class="mt-[20px]" @submit-register-form="registerUser(formUserRegister)" />
+    <router-link class="mt-[20px] text-center text-[14px] italic text-blue-500 underline" to="/login">
+      Déjà inscris ? Connecte-toi !
+    </router-link>
     <div v-if="error">
       <error-banner>{{ error }}</error-banner>
     </div>

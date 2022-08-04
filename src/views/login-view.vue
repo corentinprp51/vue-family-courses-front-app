@@ -4,6 +4,9 @@
       Connexion
     </title-big>
     <login-form v-model="formUserLogin" class="mt-[20px]" @submit-login-form="login(formUserLogin)" />
+    <router-link class="mt-[20px] text-center text-[14px] italic text-blue-500 underline" to="/register">
+      Pas encore inscris ? N'attends plus
+    </router-link>
     <div v-if="error">
       <error-banner>{{ error }}</error-banner>
     </div>
