@@ -9,7 +9,8 @@ export const useProducts = (list: Ref<null | ListHomePage>) => {
   const listStore = useListStore()
   const toggleCheckProduct = async (product: Product) => {
       product.checked = !product.checked
-      await instance.put(`products/${product.id}`, product)
+      if (list.value)
+        await instance.put(`lists/${list.value.id}/products/${product.id}`, product)
   }
     const removeProduct = async (productId: number) => {
         if(list.value) {
