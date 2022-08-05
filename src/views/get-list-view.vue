@@ -24,7 +24,15 @@
         >
       </div>
       <div class="mt-[20px]">
-        <products_list :products="list.products" @check-product="toggleCheckProduct" @remove-product="removeProduct" />
+        <products_list
+          v-if="list.products.length > 0"
+          :products="list.products"
+          @check-product="toggleCheckProduct"
+          @remove-product="removeProduct"
+        />
+        <p v-else class="font-light italic text-third-text-color text-[16px] text-center">
+          Aucun produits
+        </p>
       </div>
     </div>
     <div v-else>

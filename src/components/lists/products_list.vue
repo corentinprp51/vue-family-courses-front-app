@@ -10,6 +10,9 @@
         @check-product="emit('checkProduct', product)"
         @remove-product="emit('removeProduct', product.id)"
       />
+      <p v-if="products.filter((p => !p.checked)).length === 0" class="font-light italic text-third-text-color text-[14px]">
+        Aucun produits
+      </p>
     </div>
   </div>
   <div class="mt-[15px]">
@@ -23,6 +26,9 @@
         @check-product="emit('checkProduct', product)"
         @remove-product="emit('removeProduct', product.id)"
       />
+      <p v-if="products.filter((p => p.checked)).length === 0" class="font-light italic text-third-text-color text-[14px]">
+        Aucun produits
+      </p>
     </div>
   </div>
 </template>
