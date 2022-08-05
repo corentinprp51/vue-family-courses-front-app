@@ -5,19 +5,9 @@ import BackMenu from '@/components/navigation/back-menu.vue';
 import { io } from 'socket.io-client';
 import { useSocketStore } from '@/store/socket';
 import FlashMessageHandler from '@/components/banner/flash-messages/flash-message-handler.vue';
-import {Ref, ref} from "vue";
 
 const route = useRoute()
-const promptPWA: Ref<null | Event> = ref(null)
 const transition: string = (route.meta.transition) as string || 'fade'
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  promptPWA.value = e;
-});
-window.addEventListener("appinstalled", () => {
-  promptPWA.value = null;
-});
 
 const routesForBackMenu = ['create_list', 'get_list', 'add_product_to_list', 'join_list', 'edit_list']
 const needBackMenu = () => {
@@ -43,12 +33,6 @@ socketStore.setSocket(socket)
 
 <template>
   <div class="min-w-screen max-w-screen overflow-hidden">
-    <div v-if="promptPWA">
-      Install the app
-      <button @click="promptPWA.prompt()">
-        Install
-      </button>
-    </div>
     <!-- Flash Message Handler -->
     <flash-message-handler />
     <transition :name="transition" mode="out-in">
