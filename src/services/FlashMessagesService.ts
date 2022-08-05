@@ -1,5 +1,6 @@
 import { ComponentPublicInstance, markRaw, ref, Ref } from 'vue';
 import SuccessFlashMessage from '@/components/banner/flash-messages/success-flash-message.vue'
+import ErrorFlashMessage from '@/components/banner/flash-messages/error-flash-message.vue'
 
 export default class FlashMessagesService {
     private static instance: FlashMessagesService
@@ -16,8 +17,19 @@ export default class FlashMessagesService {
         return FlashMessagesService.instance
     }
 
-    public success(msg = 'Ceci est un message de succès'): void {
+    public success(msg = 'Succès'): void {
         const component = markRaw(SuccessFlashMessage)
+        this.message.value.push({
+            component,
+            message: msg
+        })
+        setTimeout(() => {
+            this.message.value.shift()
+        }, this.TIMEOUT)
+    }
+
+    public error(msg = 'Erreur'): void {
+        const component = markRaw(ErrorFlashMessage)
         this.message.value.push({
             component,
             message: msg

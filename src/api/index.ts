@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useUserStore } from '@/store/user';
+import FlashMessagesService from '@/services/FlashMessagesService';
 
 const baseURL = import.meta.env.VITE_BASE_URL
 const instance = axios.create({
@@ -17,6 +18,9 @@ instance.interceptors.request.use((request) => {
 })
 
 instance.interceptors.response.use(response => response, async (error) => {
+    if (error.response.status === 500 || error.response.status === 400) {
+        FlashMessagesService.getInstance().error()
+    }
     if (error.response.status === 422) {
         if (error.response.data.errors.length > 0) {
             return Promise.reject({...error.response.data.errors[0], status: error.response.status })
