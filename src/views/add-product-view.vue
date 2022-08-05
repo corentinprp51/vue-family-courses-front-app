@@ -1,6 +1,6 @@
 <template>
   <div>
-    <title-medium>
+    <title-medium v-if="listStore.list">
       {{ listStore.list.title }}
     </title-medium>
     <div class="mt-[43px]">

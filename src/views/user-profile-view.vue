@@ -12,9 +12,6 @@
       <error-banner v-if="error" class="mt-[10px] w-full">
         {{ error }}
       </error-banner>
-      <success-banner v-else-if="successMsg" class="mt-[10px] w-full">
-        {{ successMsg }}
-      </success-banner>
     </div>
   </div>
 </template>
@@ -26,9 +23,8 @@ import { reactive } from 'vue';
 import { useEditUser } from '@/api/user/useEditUser';
 import ErrorBanner from '@/components/banner/error-banner.vue';
 import { UserRegister } from '@/types/users/UserRegister';
-import SuccessBanner from '@/components/banner/success-banner.vue';
 
-const { user, error, editUser, successMsg } = useEditUser()
+const { user, error, editUser } = useEditUser()
 const userEditForm: UserRegister = reactive({
   ...user,
   password: '',

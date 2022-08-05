@@ -1,8 +1,9 @@
 import instance from '@/api';
 import { Ref, ref } from 'vue';
+import {ListHomePage} from "@/types/lists/ListHomePage";
 
 export const useGetByUsers = () => {
-    const lists = ref(null)
+    const lists: Ref<Array<ListHomePage>> = ref([])
     const isPreloading = ref(false)
     const error: Ref<string> = ref('')
     const getLists = async () => {

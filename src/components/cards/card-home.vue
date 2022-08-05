@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col bg-white drop-shadow-classic rounded-[10px]">
-    <!--    <div class="flex items-center justify-between mx-[10px]">-->
     <div class="grid grid-cols-[1fr,3fr] items-center gap-[6px] auto-rows-fr mx-[10px] mt-[10px]">
       <div class="w-[75px] h-[75px] rounded-full bg-white drop-shadow-classic" />
       <div class="flex flex-col">
@@ -32,13 +31,13 @@
 
 import { ListHomePage } from '@/types/lists/ListHomePage';
 import { computed } from 'vue';
-import { User } from '@/types/users/User';
+import {UserFromList} from "@/types/users/UserFromList";
 
 const props = defineProps< { list: ListHomePage } >()
 const getLocalDate = computed(() => {
   return new Date(props.list.created_at).toLocaleDateString()
 })
-const getListOwner = (users: Array<User>) => {
+const getListOwner = (users: Array<UserFromList>) => {
   const user = users.find((user) => user.role === 'owner')
   if (user) {
     return user.username

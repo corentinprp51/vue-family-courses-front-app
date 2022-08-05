@@ -3,12 +3,12 @@ import { Ref, ref } from 'vue';
 import { useUserStore } from '@/store/user';
 import { UserRegister } from '@/types/users/UserRegister';
 import FlashMessagesService from '@/services/FlashMessagesService';
+import { User } from "@/types/users/User";
 
 export const useEditUser = () => {
     const userStore = useUserStore()
-    const { user } = useUserStore()
+    const user = userStore.user as User
     const error: Ref<string> = ref('')
-    // const successMsg: Ref<string> = ref('')
     const filterEditedFields = (userEditForm: UserRegister) => {
         const userToSend: Partial<UserRegister> = { ...userEditForm }
         if (userStore.user) {
@@ -29,11 +29,7 @@ export const useEditUser = () => {
                 await instance.put('user/edit', userToSend)
                     .then((response) => {
                         userStore.setUser(response.data)
-                        // successMsg.value = 'Vos données ont bien été mises à jours'
                         FlashMessagesService.getInstance().success('Vos données ont bien été mises à jours')
-                        // setTimeout(() => {
-                        //     successMsg.value = ''
-                        // }, 4000)
                         return response.data
                     })
                     .catch((err) => {

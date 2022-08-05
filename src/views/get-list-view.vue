@@ -6,7 +6,7 @@
     <div v-if="!isPreloading && list">
       <title-medium>{{ list.title }}</title-medium>
       <div class="flex items-center justify-center mt-[20px]">
-        <button-item class="py-[7px] w-[70%]" @click="router.push(`/${list.id}/add`)">
+        <button-item class="py-[7px] w-[70%]" @click="router.push(`/${list ? list.id : ''}/add`)">
           Ajouter un article
         </button-item>
         <img
@@ -16,11 +16,11 @@
           @click="copyInvitationLink"
         >
         <img
-          v-if="userList.role === 'owner'"
+          v-if="userList && userList.role === 'owner'"
           src="@/assets/editListIcon.svg"
           class="ml-[9px]"
           alt="Modifier la liste"
-          @click="router.push(`/${list.id}/edit`)"
+          @click="router.push(`/${list ? list.id : ''}/edit`)"
         >
       </div>
       <div class="mt-[20px]">

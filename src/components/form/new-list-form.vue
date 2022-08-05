@@ -20,7 +20,7 @@ import { useVModel } from '@/composables/UseVModel';
 import { ListHomePage } from '@/types/lists/ListHomePage';
 import InputInvitationLink from '@/components/form/input-invitation-link.vue';
 
-const props = withDefaults(defineProps<{modelValue: ListHomePage; isEdit?: boolean}>(), {
+const props = withDefaults(defineProps<{modelValue: ListHomePage | Partial<ListHomePage>; isEdit?: boolean}>(), {
   isEdit: false
 })
 const propsValue = useVModel(props, 'modelValue')

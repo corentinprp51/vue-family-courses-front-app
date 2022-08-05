@@ -22,7 +22,7 @@ import ButtonItem from '@/components/form/button-item.vue';
 import { useVModel } from '@/composables/UseVModel';
 import { Product } from '@/types/products/Product';
 
-const props = defineProps<{modelValue: Product}>()
+const props = defineProps<{modelValue: Partial<Product>}>()
 const propsValue = useVModel(props, 'modelValue')
 const emit = defineEmits<{
   (e: 'addProductForm'): void,
