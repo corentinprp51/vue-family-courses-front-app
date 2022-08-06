@@ -52,6 +52,7 @@ import LoadingSpinner from '@/components/loader/loading-spinner.vue';
 import { useSocketStore } from '@/store/socket';
 import { Product } from '@/types/products/Product';
 import { onMounted, onUnmounted } from 'vue';
+import FlashMessagesService from '@/services/FlashMessagesService';
 
 const route = useRoute()
 const router = useRouter()
@@ -59,8 +60,10 @@ const { error, list, userList, isPreloading } = useGetOne(route.params.id.toStri
 const { toggleCheckProduct, removeProduct } = useProducts(list)
 
 const copyInvitationLink = () => {
-  if (list.value)
+  if (list.value) {
+    FlashMessagesService.getInstance().success(`Lien d'invitation copié !`)
     return navigator.clipboard.writeText(list.value.invitation_link)
+  }
   return
 }
 const socketStore = useSocketStore()
